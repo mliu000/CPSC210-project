@@ -131,13 +131,13 @@ public class CustomerMode extends CommonOperations {
             } else if (input.equals("2")) {
                 choice2itemSearch();
             } else if (input.equals("3")) {
-                loggedInCustomer.printItemsRecentlyBidded();
+                choice3();
             } else if (input.equals("4")) {
                 choice4();
             } else if (input.equals("5")) {
                 choice5();
             } else if (input.equals("6")) {
-                loggedInCustomer.printOutItemsWon();
+                choice6();
             } else if (input.equals("7")) {
                 logout();
             } else {
@@ -148,11 +148,20 @@ public class CustomerMode extends CommonOperations {
 
     // USER CHOICES BELOW:
 
-    // EFFECTS: prints out items currently on auction without other customer info.
+    /* EFFECTS: Prints out auctioning items with parameters serving as variations in items printed from out from the
+    customer and admin pov
+     */
     private void choice1() {
-        String emptyMessage = "\nNo options up for auction currently. Please come back later";
-        String bidMessage = "Minimum bid required: $";
-        auctionMarket.printAuctioningItems(emptyMessage, bidMessage, false);
+        if (this.auctionMarket.getItemsUpForAuction().isEmpty()) {
+            System.out.println("\nNo options up for auction currently. Please come back later");
+        } else {
+            System.out.println("\nTotal items up for auction: " + this.auctionMarket.getItemsUpForAuction().size());
+            System.out.println("Below is a list of all items up for auction: ");
+            for (Item item: this.auctionMarket.getItemsUpForAuction()) {
+                System.out.println("\nName: " + item.getItemName());
+                System.out.println("Minimum bid required: $" + item.getItemMinBiddingPrice());
+            }
+        }
     }
 
     // EFFECTS: prompts the user to enter an item name, and tells the user if item is found.
@@ -191,6 +200,31 @@ public class CustomerMode extends CommonOperations {
             System.out.println("\nDid not enter number amount. Transaction cancelled");
         }
         scanner.nextLine();
+    }
+
+    // EFFECTS: prints out the items on auction market
+    private void choice3() {
+        if (this.loggedInCustomer.getRecentlyBiddedItemsLog().isEmpty()) {
+            System.out.println("\nNo recently bidded items");
+        } else {
+            System.out.println("\nRecently bidded items starting with most recent: ");
+            for (int i = this.loggedInCustomer.getRecentlyBiddedItemsLog().size(); i-- > 0; ) {
+                Item item = this.loggedInCustomer.getRecentlyBiddedItemsLog().get(i);
+                System.out.println("\nItem name: " + item.getItemName());
+                if (item.isUpForAuction()) {
+                    System.out.println("Current highest bid: $" + item.getItemMinBiddingPrice());
+                    if (item.getCustomerWithTheHighestBid() == this.loggedInCustomer) {
+                        System.out.println("You currently have the highest bid for this item");
+                    } else {
+                        System.out.println("You do not have the highest bid for this item");
+                    }
+                } else if (this.loggedInCustomer.getItemsWon().contains(item)) {
+                    System.out.println("You won this item!!!!!!");
+                } else {
+                    System.out.println("Item has been auctioned off already :(");
+                }
+            }
+        }
     }
 
     // EFFECTS: prompts the user choose between depositing or extracting money
@@ -270,6 +304,19 @@ public class CustomerMode extends CommonOperations {
             }
         } catch (PasswordDoesNotMeetRequirement e) {
             System.out.println("Password must be at least 4 characters long without spaces.");
+        }
+    }
+
+    private void choice6() {
+        if (this.loggedInCustomer.getItemsWon().isEmpty()) {
+            System.out.println("\nHaven't won any items as of yet.");
+        } else {
+            System.out.println("Total item(s) won: " + this.loggedInCustomer.getItemsWon().size());
+            System.out.println("Below is a list of all item you have won");
+            for (Item item: this.loggedInCustomer.getItemsWon()) {
+                System.out.println("\nItem name: " + item.getItemName());
+                System.out.println("Final bidding price: $" + item.getItemMinBiddingPrice());
+            }
         }
     }
 

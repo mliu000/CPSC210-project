@@ -69,7 +69,7 @@ public class AdminMode extends CommonOperations {
             } else if (input.equals("3")) {
                 choice3();
             } else if (input.equals("4")) {
-                this.customerDatabase.printOutCustomerDatabase();
+                choice4();
             } else if (input.equals("5")) {
                 choice5();
             } else if (input.equals("6")) {
@@ -85,10 +85,23 @@ public class AdminMode extends CommonOperations {
     /* EFFECTS: Prints out the items available for bidding, with the special option of viewing the customer with
     the highest bid for each item.
      */
-    private void choice1() {
-        String emptyMessage = "\nNo options up for auction currently, start a bid soon!";
-        String bidMessage = "Current highest bidding price: $";
-        auctionMarket.printAuctioningItems(emptyMessage, bidMessage, true);
+    public void choice1() {
+        if (this.auctionMarket.getItemsUpForAuction().isEmpty()) {
+            System.out.println("\nNo options up for auction currently, start a bid soon!");
+        } else {
+            System.out.println("\nTotal items up for auction: " + this.auctionMarket.getItemsUpForAuction().size());
+            System.out.println("Below is a list of all items up for auction: ");
+            for (Item item: this.auctionMarket.getItemsUpForAuction()) {
+                System.out.println("\nName: " + item.getItemName());
+                System.out.println("Current highest bidding price: $" + item.getItemMinBiddingPrice());
+                if (item.getCustomerWithTheHighestBid() != null) {
+                    System.out.println("Customer with the highest bid: "
+                            + item.getCustomerWithTheHighestBid().getUserName());
+                } else {
+                    System.out.println("No customer has bidded on this item yet.");
+                }
+            }
+        }
     }
 
     // EFFECTS: Prompts the admin user to start a bid by entering a name and minimum bidding price.
@@ -144,6 +157,21 @@ public class AdminMode extends CommonOperations {
             auctionMarket.auctionOffItem(item);
         } else {
             throw new GoBack();
+        }
+    }
+
+    private void choice4() {
+        if (this.customerDatabase.getCustomerAccountDatabase().isEmpty()) {
+            System.out.println("\nNo customers are currently registered at the moment");
+        } else {
+            System.out.println("\nThere are " + this.customerDatabase.getCustomerAccountDatabase().size()
+                    + " customer(s) registered.");
+            System.out.println("Below is a list of every customer's information.");
+            for (CustomerAccount customerAccount : this.customerDatabase.getCustomerAccountDatabase()) {
+                System.out.println("\nUsername: " + customerAccount.getUserName());
+                System.out.println("Password: " + customerAccount.getPassword());
+                System.out.println("Balance: $" + customerAccount.getBalance());
+            }
         }
     }
 
