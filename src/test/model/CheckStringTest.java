@@ -22,7 +22,10 @@ class CheckStringTest {
         this.stringWithOutUpperCase = "muye1208";
     }
 
+    // For each of the tests below, it makes sure that the following methods are producing the correct boolean values.
+
     @Test
+    // Test to make sure method produces true if string contains lower case letters, false if not
     public void containsLowerCaseLettersTest() {
         assertTrue(stringChecker.containsLowerCaseLetters(this.stringWithoutDigits));
         assertTrue(stringChecker.containsLowerCaseLetters(this.stringWithUpperCaseLowerCaseAndDigits));
@@ -31,6 +34,7 @@ class CheckStringTest {
     }
 
     @Test
+    // Test to make sure method produces true if string contains upper case letters, false if not
     public void containsUpperCaseLettersTest() {
         assertTrue(stringChecker.containsUpperCaseLetters(this.stringWithUpperCaseLowerCaseAndDigits));
         assertTrue(stringChecker.containsUpperCaseLetters(this.stringWithoutDigits));
@@ -39,6 +43,7 @@ class CheckStringTest {
     }
 
     @Test
+    // Test to make sure method produces true if string contains digits, false if not
     public void containsDigitsTest() {
         assertTrue(stringChecker.containsDigits(this.stringWithUpperCaseLowerCaseAndDigits));
         assertFalse(stringChecker.containsDigits(this.stringWithoutDigits));

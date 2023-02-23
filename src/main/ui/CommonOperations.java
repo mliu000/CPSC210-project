@@ -9,6 +9,7 @@ public class CommonOperations {
 
     private final Scanner scanner = new Scanner(System.in);
 
+    // EFFECTS: asks the user if they want to return to the previous prompt
     public void goBack() throws GoBack {
         while (true) {
             String input;
@@ -27,6 +28,7 @@ public class CommonOperations {
 
     }
 
+    // EFFECTS: prompts the user to log out of their account
     public void logout() throws LogOut {
         while (true) {
             String input;

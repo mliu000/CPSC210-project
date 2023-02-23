@@ -5,6 +5,7 @@ public class CheckString {
     public CheckString() {
     }
 
+    // EFFECTS: checks to make sure string contains at least one uppercase character
     public boolean containsUpperCaseLetters(String string) {
         for (int i = 0; i < string.length(); i++) {
             char character = string.charAt(i);
@@ -15,6 +16,7 @@ public class CheckString {
         return false;
     }
 
+    // EFFECTS: checks to make sure string contains at least one lowercase character
     public boolean containsLowerCaseLetters(String string) {
         for (int i = 0; i < string.length(); i++) {
             char character = string.charAt(i);
@@ -25,6 +27,7 @@ public class CheckString {
         return false;
     }
 
+    // EFFECTS: checks to make sure string contains at least one digit
     public boolean containsDigits(String string) {
         for (int i = 0; i < string.length(); i++) {
             char character = string.charAt(i);

@@ -15,11 +15,13 @@ public class StartupInterface {
     AuctionMarket auctionMarket = new AuctionMarket();
     AdminAccount adminAccount = new AdminAccount("AuctionAdmin", "DoNotLeak1010");
 
+    // EFFECTS: Constructs a new starting interface
     public StartupInterface() {
         System.out.println("\n******* Welcome to the Mu Ye's auction bidding market! *******");
         startupGreetingMenu();
     }
 
+    // EFFECTS: prints out the greeting menu. Also, asks the user which mode they want to use
     public void startupGreetingMenu() {
         while (true) {
             String input;
@@ -41,6 +43,7 @@ public class StartupInterface {
         }
     }
 
+    // EFFECTS: starts the admin mode
     private void launchAdminMode() {
         try {
             new AdminMode(this.auctionMarket, this.adminAccount, this.customerDatabase);
@@ -51,6 +54,7 @@ public class StartupInterface {
         }
     }
 
+    // EFFECTS: starts the customer mode
     private void launchCustomerMode() {
         try {
             new CustomerMode(this.customerDatabase, this.auctionMarket);

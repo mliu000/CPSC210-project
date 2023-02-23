@@ -6,16 +6,14 @@ public class CustomerDatabase {
 
     private ArrayList<CustomerAccount> customerAccountDatabase;
 
+    // EFFECTS: Constructs a new customer database
     public CustomerDatabase() {
         this.customerAccountDatabase = new ArrayList<>();
     }
 
-    public ArrayList<CustomerAccount> getCustomerAccountDatabase() {
-        return customerAccountDatabase;
-    }
-
+    // EFFECTS: checks if account with username and password match the curresponding inputs.
     public CustomerAccount checkIfAccountExists(String usernameInput, String passwordInput) {
-        for (CustomerAccount customerAccount: customerAccountDatabase) {
+        for (CustomerAccount customerAccount: this.customerAccountDatabase) {
             if (customerAccount.getUserName().equals(usernameInput)
                     && customerAccount.getPassword().equals(passwordInput)) {
                 return customerAccount;
@@ -24,6 +22,7 @@ public class CustomerDatabase {
         return null;
     }
 
+    // EFFECTS: prints out the customer database
     public void printOutCustomerDatabase() {
         if (this.customerAccountDatabase.isEmpty()) {
             System.out.println("\nNo customers are currently registered at the moment");
@@ -34,11 +33,11 @@ public class CustomerDatabase {
                 System.out.println("\nUsername: " + customerAccount.getUserName());
                 System.out.println("Password: " + customerAccount.getPassword());
                 System.out.println("Balance: $" + customerAccount.getBalance());
-                System.out.println("# of items bidded: " + customerAccount.getNumberOfItemsBidded());
             }
         }
     }
 
+    // EFFECTS: returns true if username of existing account matches with the input, false otherwise
     public boolean checkUsernameDuplicate(String username) {
         for (CustomerAccount customerAccount: this.customerAccountDatabase) {
             if (customerAccount.getUserName().equals(username)) {
@@ -46,6 +45,11 @@ public class CustomerDatabase {
             }
         }
         return false;
+    }
+
+    // EFFECTS: returns customer database
+    public ArrayList<CustomerAccount> getCustomerAccountDatabase() {
+        return this.customerAccountDatabase;
     }
 
 }

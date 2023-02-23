@@ -30,10 +30,11 @@ much better deal than buying it directly. Also, I want to get more insight of th
 
 **Task 3: User Stories**
 
-- As a user, I want to be able to add and remove items from the auction market. 
+- As a user (admin), I want to be able to add and remove items from the auction market. 
 - As a user, I want to be able to set a minimum bidding price to each item.
-- As a user, I want to be able to set a timer to when the bid ends. 
 - As a user, I want to be able to give the item to the person who won the bid, as well as obtain their bidding money
-- As a user, I want to keep track of all items recently auctioned off, both the name and price of the item. 
-- As a user, I want to keep track of the total money made from the auctions.
+- As a user (customer) , I want to keep track of all items I won
+- As a user (customer), I would like to change my password, deposit and extract balance.
+- As a user (customer), I want to be able to create multiple accounts
+- As a user (customer), I want to be able to change passwords.
 
