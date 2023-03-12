@@ -43,9 +43,8 @@ public class JsonReaderAuctionMarketTest extends JsonTest {
         JsonReaderAuctionMarket jram = new JsonReaderAuctionMarket("./data/testReaderGeneralAuctionMarketData.json", cd.getCustomerAccountDatabase());
         try {
             AuctionMarket newAm = jram.read();
-            assertEquals(1, newAm.getItemsUpForAuction().size());
-            assertEquals("asuna yuuki", newAm.getItemsUpForAuction().get(0).getItemName());
-            assertEquals(200, newAm.getItemsUpForAuction().get(0).getItemMinBiddingPrice());
+            checkItem("asuna yuuki", 200, "Dummy account",
+                    "Notinuse", 0, new ArrayList<>(), newAm.getItemsUpForAuction().get(0));
         } catch (IOException e) {
             fail("Couldn't read from file");
         }

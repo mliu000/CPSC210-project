@@ -11,10 +11,15 @@ import java.util.ArrayList;
 
 public class JsonTest {
 
-    protected void checkItem(String name, int minBiddingPrice, CustomerAccount highestBid, Item item) {
+    protected void checkItem(String name,
+                             int minBiddingPrice,
+                             String highestBidUsername, String highestBidPassword, int balance, ArrayList<String> itemsWon,
+                             Item item) {
         assertEquals(name, item.getItemName());
         assertEquals(minBiddingPrice, item.getItemMinBiddingPrice());
-        assertEquals(highestBid, item.getCustomerWithTheHighestBid());
+        assertEquals(highestBidUsername, item.getCustomerWithTheHighestBid().getUserName());
+        assertEquals(highestBidPassword, item.getCustomerWithTheHighestBid().getPassword());
+        assertEquals(balance, item.getCustomerWithTheHighestBid().getBalance());
         assertTrue(item.isUpForAuction());
     }
 
