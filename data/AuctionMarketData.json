@@ -1,0 +1,9 @@
+{
+    "name": "Auction Market",
+    "items": [{
+        "min bidding price": 200,
+        "customer with the highest bid": "Dummy account",
+        "name": "asuna yuuki",
+        "currently up for auction": true
+    }]
+}

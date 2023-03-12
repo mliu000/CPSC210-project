@@ -1,0 +1,23 @@
+{
+    "name": "Customer Database",
+    "accounts": [
+        {
+            "password": "a",
+            "items won": [],
+            "balance": 0,
+            "username": "1"
+        },
+        {
+            "password": "b",
+            "items won": [],
+            "balance": 0,
+            "username": "2"
+        },
+        {
+            "password": "c",
+            "items won": [],
+            "balance": 0,
+            "username": "3"
+        }
+    ]
+}

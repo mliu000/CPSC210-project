@@ -38,3 +38,14 @@ much better deal than buying it directly. Also, I want to get more insight of th
 - As a user (customer), I want to be able to create multiple accounts
 - As a user (customer), I want to be able to change passwords.
 
+**Phase 2 user stories**
+
+- As a user (customer), I want to be able to save the items ive bidded on, items won, as well as my bank account balance
+- As a user (both admin and customer), I want to have the option to continue where I left off (items in auction market, 
+- bids, etc) are unchanged when I close and restart the program.
+
+
+Json code citation:
+
+Source: JsonSerializationDemo - from edX
+Coder: Paul carter.

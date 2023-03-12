@@ -1,11 +1,15 @@
 package model;
 
-public class AdminAccount implements Account {
+import org.json.JSONObject;
+import persistence.Writable;
+
+// Class that constructs the admin account. There is only ever one instance of this object in this program.
+public class AdminAccount implements Account, Writable {
 
     private String username;
     private String password;
 
-    // EFFECTS: constructs an admin (there is only ever one)
+    // EFFECTS: constructs the one and only admin
     public AdminAccount(String username, String password) {
         this.username = username;
         this.password = password;
@@ -28,5 +32,13 @@ public class AdminAccount implements Account {
     @Override
     public void changePassword(String newPassword) {
         this.password = newPassword;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("username", this.username);
+        jsonObject.put("password", this.password);
+        return jsonObject;
     }
 }

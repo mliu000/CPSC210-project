@@ -1,8 +1,15 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
-public class AuctionMarket {
+/*
+Class that includes the list of items up for auction
+ */
+public class AuctionMarket implements Writable {
 
     private ArrayList<Item> itemsUpForAuction;
 
@@ -31,5 +38,25 @@ public class AuctionMarket {
     // EFFECTS: returns the list of items for auction
     public ArrayList<Item> getItemsUpForAuction() {
         return this.itemsUpForAuction;
+    }
+
+    // EFFECTS: Writes the items in the auction market to JSONArray
+    @Override
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("name", "Auction Market");
+        jsonObject.put("items", itemsToJson());
+        return jsonObject;
+    }
+
+    // EFFECTS: Puts each individual item from the auction market into the JSONArray;
+    public JSONArray itemsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Item item: this.itemsUpForAuction) {
+            jsonArray.put(item.toJson());
+        }
+
+        return jsonArray;
     }
 }

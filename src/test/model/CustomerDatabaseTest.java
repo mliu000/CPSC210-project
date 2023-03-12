@@ -3,6 +3,8 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CustomerDatabaseTest {
@@ -16,9 +18,9 @@ public class CustomerDatabaseTest {
     public void runBefore() {
         // Instantiates the customers and customerDatabase
         this.customerDatabaseTestList = new CustomerDatabase();
-        this.customerAccount1 = new CustomerAccount("AnimeLover", "1234");
-        this.customerAccount2 = new CustomerAccount("AnimeObsessed", "1234");
-        this.customerAccount3 = new CustomerAccount("AnimeCosplayer", "1234");
+        this.customerAccount1 = new CustomerAccount("AnimeLover", "1234", 0, new ArrayList<>());
+        this.customerAccount2 = new CustomerAccount("AnimeObsessed", "1234", 0, new ArrayList<>());
+        this.customerAccount3 = new CustomerAccount("AnimeCosplayer", "1234", 0, new ArrayList<>());
     }
 
     @Test

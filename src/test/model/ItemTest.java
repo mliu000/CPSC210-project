@@ -3,6 +3,8 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ItemTest {
@@ -15,9 +17,9 @@ public class ItemTest {
     @BeforeEach
     public void runBefore() {
         // Instantiates the items and test customers
-        this.item = new Item("Tanjiro figure", 100);
-        this.customerAccount1 = new CustomerAccount("AnimeLover", "1234");
-        this.customerAccount2 = new CustomerAccount("AnimeObsessed", "1234");
+        this.item = new Item("Tanjiro figure", 100, new CustomerAccount("Dummy account", "Notinuse", 0, new ArrayList<>()));
+        this.customerAccount1 = new CustomerAccount("AnimeLover", "1234", 0, new ArrayList<>());
+        this.customerAccount2 = new CustomerAccount("AnimeObsessed", "1234", 0, new ArrayList<>());
 
         this.customerAccount1.depositIntoBalance(1000);
         this.customerAccount2.depositIntoBalance(1000);
@@ -29,7 +31,7 @@ public class ItemTest {
         assertEquals("Tanjiro figure", this.item.getItemName());
         assertEquals(100, this.item.getItemMinBiddingPrice());
         assertTrue(this.item.isUpForAuction());
-        assertNull(this.item.getCustomerWithTheHighestBid());
+        assertEquals("Dummy account", this.item.getCustomerWithTheHighestBid().getUserName());
     }
 
     @Test
@@ -61,7 +63,7 @@ public class ItemTest {
 
         // customer 1 should have the item in their itemsWon inventory, and have $800. Item auction status should = false
         assertEquals(800, this.customerAccount1.getBalance());
-        assertTrue(this.customerAccount1.getItemsWon().contains(item));
+        assertTrue(this.customerAccount1.getItemsWon().contains(item.getItemName()));
         assertFalse(this.item.isUpForAuction());
     }
 }

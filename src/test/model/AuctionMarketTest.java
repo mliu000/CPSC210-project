@@ -23,13 +23,16 @@ public class AuctionMarketTest {
         this.auctionMarketTest = new AuctionMarket();
 
         // Creates sample items to add to auction market
-        this.item1 = new Item("Tanjiro figure", 100);
-        this.item2 = new Item("Nezuko figure", 100);
-        this.item3 = new Item("Shinobu figure", 120);
+        this.item1 = new Item("Tanjiro figure", 100,
+                new CustomerAccount("null", "null", 0, new ArrayList<>()));
+        this.item2 = new Item("Nezuko figure", 100,
+                new CustomerAccount("null", "null", 0, new ArrayList<>()));
+        this.item3 = new Item("Shinobu figure", 120,
+                new CustomerAccount("null", "null", 0, new ArrayList<>()));
 
         // Creates sample customers
-        this.customerAccount1 = new CustomerAccount("AnimeLover", "1234");
-        this.customerAccount2 = new CustomerAccount("AnimeObsessed", "1234");
+        this.customerAccount1 = new CustomerAccount("AnimeLover", "1234", 0, new ArrayList<>());
+        this.customerAccount2 = new CustomerAccount("AnimeObsessed", "1234", 0, new ArrayList<>());
 
         // Updates bid status of some items
         this.item1.updateBidStatus(this.customerAccount1, 120);
@@ -82,6 +85,6 @@ public class AuctionMarketTest {
         assertEquals(remainingItems, this.auctionMarketTest.getItemsUpForAuction());
 
         // Checks to make sure customer1 has the item in itemsWon list
-        assertTrue(this.customerAccount1.getItemsWon().contains(item1));
+        assertTrue(this.customerAccount1.getItemsWon().contains(item1.getItemName()));
     }
 }

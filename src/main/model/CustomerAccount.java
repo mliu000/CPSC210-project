@@ -1,24 +1,30 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
+import java.lang.reflect.Array;
+import java.nio.file.Watchable;
 import java.util.ArrayList;
 
-public class CustomerAccount implements Account {
+/* Class that constructs the customer account, which includes username, password, balance and names of items won.
+Also allows the user to change password and deposit/extract balance.
+ */
+public class CustomerAccount implements Account, Writable {
     private final String username;
     private String password;
     private int balance;
-    private ArrayList<Item> recentlyBiddedItemsLog;
 
-    private ArrayList<Item> itemsWon;
+    private ArrayList<String> itemsWon;
 
-    private final int recentlyBiddedListMaxSize = 5;
 
     // EFFECTS: constructs a new customer account
-    public CustomerAccount(String username, String password) {
+    public CustomerAccount(String username, String password, int balance, ArrayList<String> itemsWon) {
         this.username = username;
         this.password = password;
-        this.balance = 0;
-        this.recentlyBiddedItemsLog = new ArrayList<>();
-        this.itemsWon = new ArrayList<>();
+        this.balance = balance;
+        this.itemsWon = itemsWon;
     }
 
     // EFFECTS: returns username
@@ -52,35 +58,41 @@ public class CustomerAccount implements Account {
         this.balance -= extractAmt;
     }
 
-    // MODIFIES: this
-    /* EFFECTS: adds item to recently bidded list with 3 cases. If list is not full and does not contain the item about
-    to added, adds item normally. If it does, then removes the old instance and adds the new one. If list is already
-    full, removes the first item on list before adding the new item.
-     */
-    public void addItemToRecentlyBidded(Item newItem) {
-        if (this.recentlyBiddedItemsLog.contains(newItem)) {
-            this.recentlyBiddedItemsLog.remove(newItem);
-            this.recentlyBiddedItemsLog.add(newItem);
-        } else if (this.recentlyBiddedItemsLog.size() == this.recentlyBiddedListMaxSize) {
-            this.recentlyBiddedItemsLog.remove(0);
-            this.recentlyBiddedItemsLog.add(newItem);
-        } else {
-            this.recentlyBiddedItemsLog.add(newItem);
-        }
-    }
+
+
 
     // EFFECTS: returns balance
     public int getBalance() {
         return this.balance;
     }
 
-    // EFFECTS: returns recently bidded item list
-    public ArrayList<Item> getRecentlyBiddedItemsLog() {
-        return this.recentlyBiddedItemsLog;
-    }
 
     // EFFECTS: returns list of items won
-    public ArrayList<Item> getItemsWon() {
+    public ArrayList<String> getItemsWon() {
         return this.itemsWon;
     }
+
+    // EFFECTS: adds the fields of the customer account into JSONArray to be able to be retrieved later.
+    @Override
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("username", this.username);
+        jsonObject.put("password", this.password);
+        jsonObject.put("balance", this.balance);
+        jsonObject.put("items won", itemsWonLogToJson());
+        return jsonObject;
+    }
+
+    // EFFECTS: adds the names of the items won to JSONArray to be able to be retrieved later
+    // (under the scope of each item)
+    public JSONArray itemsWonLogToJson() {
+        JSONArray jsonArray = new JSONArray();
+        for (String item: this.itemsWon) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("name", item);
+            jsonArray.put(jsonObject);
+        }
+        return jsonArray;
+    }
+
 }

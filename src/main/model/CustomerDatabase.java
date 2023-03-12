@@ -1,8 +1,13 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
-public class CustomerDatabase {
+// Class that stores all the customer accounts.
+public class CustomerDatabase implements Writable {
 
     private ArrayList<CustomerAccount> customerAccountDatabase;
 
@@ -37,4 +42,23 @@ public class CustomerDatabase {
         return this.customerAccountDatabase;
     }
 
+    // EFFECTS: Writes the items in the customer database to JSONArray
+    @Override
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("name", "Customer Database");
+        jsonObject.put("accounts", accountsToJson());
+        return jsonObject;
+    }
+
+    // EFFECTS: Puts each individual customer from the customer account into the JSONArray;
+    public JSONArray accountsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (CustomerAccount customerAccount: this.customerAccountDatabase) {
+            jsonArray.put(customerAccount.toJson());
+        }
+
+        return jsonArray;
+    }
 }

@@ -3,9 +3,11 @@ package ui;
 import exceptions.*;
 import model.*;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+// Class that launches and contains the features and operations available of the admin mode
 public class AdminMode extends CommonOperations {
 
     private static final Scanner scanner = new Scanner(System.in);
@@ -117,7 +119,8 @@ public class AdminMode extends CommonOperations {
             if (minimumBiddingPrice < 0) {
                 throw new NegativeNumberInput();
             }
-            Item newItem = new Item(itemName, minimumBiddingPrice);
+            Item newItem = new Item(itemName, minimumBiddingPrice,
+                    new CustomerAccount("Dummy account", "Notinuse", 0, new ArrayList<>()));
             auctionMarket.getItemsUpForAuction().add(newItem);
             System.out.println("Item added to market. Success");
         } catch (InputMismatchException e) {

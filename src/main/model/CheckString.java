@@ -1,5 +1,6 @@
 package model;
 
+// Class that contains methods to check to make sure string fulfills password requirements.
 public class CheckString {
 
     public CheckString() {

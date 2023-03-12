@@ -6,9 +6,11 @@ import model.CustomerAccount;
 import model.CustomerDatabase;
 import model.Item;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+// Class that launches and contains the features and operations available of the customer mode
 public class CustomerMode extends CommonOperations {
     private static final Scanner scanner = new Scanner(System.in);
     private CustomerAccount loggedInCustomer;
@@ -72,7 +74,7 @@ public class CustomerMode extends CommonOperations {
         String username = createUsername();
         String password = createPassword();
 
-        CustomerAccount customer = new CustomerAccount(username, password);
+        CustomerAccount customer = new CustomerAccount(username, password, 0, new ArrayList<>());
         this.loggedInCustomer = customer;
         customerDatabase.getCustomerAccountDatabase().add(customer);
 
@@ -137,8 +139,6 @@ public class CustomerMode extends CommonOperations {
             } else if (input.equals("5")) {
                 choice5();
             } else if (input.equals("6")) {
-                choice6();
-            } else if (input.equals("7")) {
                 logout();
             } else {
                 System.out.println("Please enter a valid option. Try again.");
@@ -190,9 +190,8 @@ public class CustomerMode extends CommonOperations {
             } else if (bidAmount <= item.getItemMinBiddingPrice()) {
                 System.out.println("\nYou must bid for more than the current minimum bidding price.");
             } else {
-                System.out.println("Successfully bidded. You are now the customer with the highest bid");
+                System.out.println("Successfully bidded");
                 item.updateBidStatus(this.loggedInCustomer, bidAmount);
-                this.loggedInCustomer.addItemToRecentlyBidded(item);
             }
         } catch (NegativeNumberInput e) {
             System.out.println("\nCan not enter a negative bid");
@@ -202,41 +201,16 @@ public class CustomerMode extends CommonOperations {
         scanner.nextLine();
     }
 
-    // EFFECTS: prints out the items on auction market
-    private void choice3() {
-        if (this.loggedInCustomer.getRecentlyBiddedItemsLog().isEmpty()) {
-            System.out.println("\nNo recently bidded items");
-        } else {
-            System.out.println("\nRecently bidded items starting with most recent: ");
-            for (int i = this.loggedInCustomer.getRecentlyBiddedItemsLog().size(); i-- > 0; ) {
-                Item item = this.loggedInCustomer.getRecentlyBiddedItemsLog().get(i);
-                System.out.println("\nItem name: " + item.getItemName());
-                if (item.isUpForAuction()) {
-                    System.out.println("Current highest bid: $" + item.getItemMinBiddingPrice());
-                    if (item.getCustomerWithTheHighestBid() == this.loggedInCustomer) {
-                        System.out.println("You currently have the highest bid for this item");
-                    } else {
-                        System.out.println("You do not have the highest bid for this item");
-                    }
-                } else if (this.loggedInCustomer.getItemsWon().contains(item)) {
-                    System.out.println("You won this item!!!!!!");
-                } else {
-                    System.out.println("Item has been auctioned off already :(");
-                }
-            }
-        }
-    }
-
     // EFFECTS: prompts the user choose between depositing or extracting money
-    private void choice4() {
+    private void choice3() {
         System.out.println("\nYour current balance for bidding is: $" + this.loggedInCustomer.getBalance());
         System.out.println("\nDo you to deposit or extract money? \n (1) - Deposit \n (2) - Extract");
         String choice = scanner.nextLine();
         if (choice.equals("1")) {
-            choice4subchoice1();
+            choice3subchoice1();
         } else if (choice.equals("2")) {
             if (this.loggedInCustomer.getBalance() > 0) {
-                choice4subchoice2();
+                choice3subchoice2();
             } else {
                 System.out.println("\nCannot proceed with transaction. No money in account.");
             }
@@ -246,7 +220,7 @@ public class CustomerMode extends CommonOperations {
     }
 
     // EFFECTS: prompts the user to enter deposit amount into account. Throws exception if bad input received
-    private void choice4subchoice1() {
+    private void choice3subchoice1() {
         System.out.println("\nEnter amount to deposit in $:");
         try {
             int depositAmount = scanner.nextInt();
@@ -264,7 +238,7 @@ public class CustomerMode extends CommonOperations {
     }
 
     // EFFECTS: prompts user to enter extract amount. Throws exception if bad input received.
-    private void choice4subchoice2() {
+    private void choice3subchoice2() {
         try {
             System.out.println("\nEnter amount to extract in $:");
             int extractAmount = scanner.nextInt();
@@ -287,7 +261,7 @@ public class CustomerMode extends CommonOperations {
     }
 
     // EFFECTS: prompts the user to enter new password. Does not accept passwords < 4 chars
-    private void choice5() {
+    private void choice4() {
         System.out.println("Please enter new password at least 4 characters long without spaces: ");
         String newPassword = scanner.nextLine();
         try {
@@ -307,15 +281,14 @@ public class CustomerMode extends CommonOperations {
         }
     }
 
-    private void choice6() {
+    private void choice5() {
         if (this.loggedInCustomer.getItemsWon().isEmpty()) {
             System.out.println("\nHaven't won any items as of yet.");
         } else {
             System.out.println("Total item(s) won: " + this.loggedInCustomer.getItemsWon().size());
-            System.out.println("Below is a list of all item you have won");
-            for (Item item: this.loggedInCustomer.getItemsWon()) {
-                System.out.println("\nItem name: " + item.getItemName());
-                System.out.println("Final bidding price: $" + item.getItemMinBiddingPrice());
+            System.out.println("Below is a list of all item you have won\n");
+            for (String name: this.loggedInCustomer.getItemsWon()) {
+                System.out.println("Item name: " + name);
             }
         }
     }
@@ -326,10 +299,9 @@ public class CustomerMode extends CommonOperations {
         System.out.println("Please choose an option:");
         System.out.println(" (1) - View available items to bid and the bid required at the moment.");
         System.out.println(" (2) - Bid on an item.");
-        System.out.println(" (3) - View items you recently bidded.");
-        System.out.println(" (4) - Deposit or extract from balance.");
-        System.out.println(" (5) - Change Password.");
-        System.out.println(" (6) - View items won");
-        System.out.println(" (7) - Log out.");
+        System.out.println(" (3) - Deposit or extract from balance.");
+        System.out.println(" (4) - Change Password.");
+        System.out.println(" (5) - View items won");
+        System.out.println(" (6) - Log out.");
     }
 }
