@@ -34,6 +34,8 @@ public class AdminAccount implements Account, Writable {
         this.password = newPassword;
     }
 
+    // MODIFIES: JSONObject
+    // EFFECTS: Stores the contents of the admin account to JSON file
     @Override
     public JSONObject toJson() {
         JSONObject jsonObject = new JSONObject();

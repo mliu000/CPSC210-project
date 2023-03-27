@@ -31,14 +31,14 @@ public class JsonReaderCustomerDatabase extends JsonReader {
 
     // EFFECTS: reads source file as string and returns it
 
-    // EFFECTS: parses workroom from JSON object and returns it
+    // EFFECTS: parses customer database from JSON object and returns it
     private CustomerDatabase parseCustomerDatabase(JSONObject jsonObject, CustomerDatabase cd) {
         addItems(cd, jsonObject);
         return cd;
     }
 
-    // MODIFIES: wr
-    // EFFECTS: parses thingies from JSON object and adds them to workroom
+    // MODIFIES: customerDatabase
+    // EFFECTS: parses customer accounts from JSON object and adds them to storaffe
     private void addItems(CustomerDatabase cd, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("accounts");
         for (Object json : jsonArray) {
@@ -47,8 +47,8 @@ public class JsonReaderCustomerDatabase extends JsonReader {
         }
     }
 
-    // MODIFIES: wr
-    // EFFECTS: parses thingy from JSON object and adds it to workroom
+    // MODIFIES: customerDatabase
+    // EFFECTS: parses customerAccount from JSON object and adds it to customerDatabase
     private void addItem(CustomerDatabase cd, JSONObject jsonObject) {
         int balance = jsonObject.getInt("balance");
         String username = jsonObject.getString("username");
@@ -57,6 +57,9 @@ public class JsonReaderCustomerDatabase extends JsonReader {
         cd.getCustomerAccountDatabase().add(account);
     }
 
+    // MODIFIES: customerAccount
+    // EFFECTS: parses itemsWon array from each customerAccount
+    // and adds it to the itemsWon field of the customerAccount.
     public ArrayList<String> addItemsWon(JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("items won");
         ArrayList<String> itemsWon = new ArrayList<>();
@@ -67,6 +70,7 @@ public class JsonReaderCustomerDatabase extends JsonReader {
         return itemsWon;
     }
 
+    // EFFECTS: Parses each item from customer account individually.
     private void addItemWon(JSONObject jsonObject, ArrayList<String> itemsWon) {
         String itemName = jsonObject.getString("name");
         itemsWon.add(itemName);

@@ -9,6 +9,7 @@ import java.util.stream.Stream;
 // Class that contains the readFile method, extended by other classes
 public class JsonReader {
 
+    // EFFECTS: Reads the contents of the JSON file and returns it.
     public String readFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
 

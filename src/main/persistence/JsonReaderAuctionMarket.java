@@ -56,7 +56,10 @@ public class JsonReaderAuctionMarket extends JsonReader {
         am.getItemsUpForAuction().add(item);
     }
 
-    //
+    // MODIFIES: customerAccount
+    // EFFECTS: attempts to find a customer account with same username as the one stored.
+    //          if found, assigns the account to the field
+    //             assigns a new placeholder customer if not match found.
     private CustomerAccount addCustomer(JSONObject jsonObject) {
         String username = jsonObject.getString("customer with the highest bid");
         for (CustomerAccount customerAccount: customerDatabase) {

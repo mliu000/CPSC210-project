@@ -281,6 +281,7 @@ public class CustomerMode extends CommonOperations {
         }
     }
 
+    // EFFECTS: Prints out items won in the form of strings.
     private void choice5() {
         if (this.loggedInCustomer.getItemsWon().isEmpty()) {
             System.out.println("\nHaven't won any items as of yet.");

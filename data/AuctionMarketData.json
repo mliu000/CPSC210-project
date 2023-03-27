@@ -1,9 +1,17 @@
 {
     "name": "Auction Market",
-    "items": [{
-        "min bidding price": 200,
-        "customer with the highest bid": "Dummy account",
-        "name": "asuna yuuki",
-        "currently up for auction": true
-    }]
+    "items": [
+        {
+            "min bidding price": 200,
+            "customer with the highest bid": "Dummy account",
+            "name": "asuna yuuki",
+            "currently up for auction": true
+        },
+        {
+            "min bidding price": 100,
+            "customer with the highest bid": "Dummy account",
+            "name": "item2",
+            "currently up for auction": true
+        }
+    ]
 }
