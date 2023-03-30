@@ -15,6 +15,11 @@ public class AdminAccount implements Account, Writable {
         this.password = password;
     }
 
+    // EFFECTS: returns true if the both user inputted credentials match the fields, false otherwise.
+    public boolean checkCredentials(String usernameInput, String passwordInput) {
+        return this.username.equals(usernameInput) && this.password.equals(passwordInput);
+    }
+
     // EFFECTS: returns username
     @Override
     public String getUserName() {

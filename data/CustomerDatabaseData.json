@@ -15,9 +15,23 @@
         },
         {
             "password": "1234",
-            "items won": [{"name": "yuji itadori"}],
+            "items won": [
+                {"name": "item1"},
+                {"name": "item2"},
+                {"name": "item3"},
+                {"name": "item4"},
+                {"name": "item5"},
+                {"name": "item6"},
+                {"name": "item7"}
+            ],
             "balance": 150,
             "username": "muye1"
+        },
+        {
+            "password": "this",
+            "items won": [],
+            "balance": 0,
+            "username": "muye3"
         }
     ]
 }

@@ -3,14 +3,20 @@
     "items": [
         {
             "min bidding price": 200,
-            "customer with the highest bid": "Dummy account",
+            "customer with the highest bid": "No One",
             "name": "asuna yuuki",
             "currently up for auction": true
         },
         {
             "min bidding price": 100,
-            "customer with the highest bid": "Dummy account",
+            "customer with the highest bid": "No One",
             "name": "item2",
+            "currently up for auction": true
+        },
+        {
+            "min bidding price": 100,
+            "customer with the highest bid": "No One",
+            "name": "super",
             "currently up for auction": true
         }
     ]

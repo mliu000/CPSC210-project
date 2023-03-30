@@ -30,4 +30,13 @@ public class AdminAccountTest {
         this.adminTestAccount.changePassword("newPassword1010");
         assertEquals("newPassword1010", this.adminTestAccount.getPassword());
     }
+
+    @Test
+    // Tests to make sure the checkCredentials methods functions properly
+    public void checkCredentialsTest() {
+        assertTrue(this.adminTestAccount.checkCredentials("AuctionAdmin", "DoNotLeak1010"));
+        assertFalse(this.adminTestAccount.checkCredentials("AuctionDmin", "DoNotLeak1010"));
+        assertFalse(this.adminTestAccount.checkCredentials("AuctionAdmin", "DoNotLeak010"));
+
+    }
 }

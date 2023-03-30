@@ -49,3 +49,7 @@ Json code citation:
 
 Source: JsonSerializationDemo - from edX
 Coder: Paul carter.
+
+Image Citations:
+
+Startup menu background image: www.istockphoto.com

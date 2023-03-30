@@ -67,6 +67,6 @@ public class JsonReaderAuctionMarket extends JsonReader {
                 return customerAccount;
             }
         }
-        return new CustomerAccount("Dummy account", "Notinuse", 0, new ArrayList<>());
+        return new CustomerAccount("No One", "Notinuse", 0, new ArrayList<>());
     }
 }
