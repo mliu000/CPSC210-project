@@ -33,9 +33,8 @@ public class SaveData {
             jsonWriterAuctionMarket.open();
             jsonWriterAuctionMarket.write(auctionMarket);
             jsonWriterAuctionMarket.close();
-            System.out.println("\nSaved Auction Market to: " + JSON_AUCTION_MARKET_STORAGE);
         } catch (FileNotFoundException e) {
-            System.out.println("\nUnable to write to file: " + JSON_AUCTION_MARKET_STORAGE);
+            //
         }
     }
 
@@ -45,9 +44,8 @@ public class SaveData {
             jsonWriterCustomerDatabase.open();
             jsonWriterCustomerDatabase.write(customerDatabase);
             jsonWriterCustomerDatabase.close();
-            System.out.println("Saved Customer Database to: " + JSON_CUSTOMER_DATABASE_STORAGE);
         } catch (FileNotFoundException e) {
-            System.out.println("\nUnable to write to file: " + JSON_CUSTOMER_DATABASE_STORAGE);
+            //
         }
     }
 
@@ -57,9 +55,8 @@ public class SaveData {
             jsonWriterAdminAccount.open();
             jsonWriterAdminAccount.write(adminAccount);
             jsonWriterAdminAccount.close();
-            System.out.println("Saved Admin Account to: " + JSON_ADMIN_ACCOUNT_STORAGE);
         } catch (FileNotFoundException e) {
-            System.out.println("\nUnable to write to file: " + JSON_ADMIN_ACCOUNT_STORAGE);
+            //
         }
     }
 }

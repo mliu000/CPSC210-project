@@ -1,14 +1,14 @@
 package ui;
 
-import model.AdminAccount;
-import model.AuctionMarket;
-import model.CustomerAccount;
-import model.CustomerDatabase;
+import model.*;
+import model.Event;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
 public class CustomerCreateAccountMenuGui extends JFrame implements ActionListener {
@@ -114,4 +114,5 @@ public class CustomerCreateAccountMenuGui extends JFrame implements ActionListen
         this.background.getComponent(8).setVisible(true);
         this.background.getComponent(7).setVisible(false);
     }
+
 }

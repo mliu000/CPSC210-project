@@ -1,14 +1,14 @@
 package ui;
 
-import model.AdminAccount;
-import model.AuctionMarket;
-import model.CustomerAccount;
-import model.CustomerDatabase;
+import model.*;
+import model.Event;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 public class CustomerViewItemsWonGui extends JFrame implements ActionListener {
 
@@ -74,4 +74,5 @@ public class CustomerViewItemsWonGui extends JFrame implements ActionListener {
         dispose();
         new CustomerMainMenuGui(this.auctionMarket, this.adminAccount, this.customerDatabase, loggedInCustomer);
     }
+
 }

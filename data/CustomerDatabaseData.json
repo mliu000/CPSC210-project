@@ -2,36 +2,16 @@
     "name": "Customer Database",
     "accounts": [
         {
-            "password": "4321",
-            "items won": [
-                {"name": "tanjiro"},
-                {"name": "nezuko"},
-                {"name": "shinobu"},
-                {"name": "kanao"},
-                {"name": "aqua"}
-            ],
-            "balance": 750,
-            "username": "muye"
-        },
-        {
             "password": "1234",
-            "items won": [
-                {"name": "item1"},
-                {"name": "item2"},
-                {"name": "item3"},
-                {"name": "item4"},
-                {"name": "item5"},
-                {"name": "item6"},
-                {"name": "item7"}
-            ],
-            "balance": 150,
+            "items won": [],
+            "balance": 0,
             "username": "muye1"
         },
         {
-            "password": "this",
+            "password": "1234",
             "items won": [],
             "balance": 0,
-            "username": "muye3"
+            "username": "muye2"
         }
     ]
 }

@@ -52,4 +52,22 @@ Coder: Paul carter.
 
 Image Citations:
 
-Startup menu background image: www.istockphoto.com
+Startup menu background image: www.istockphoto.com\
+
+**Phase 4: Task 2**
+
+Event log:
+
+Tue Apr 11 11:19:57 PDT 2023
+Added new customer: "muye" to customer database
+Tue Apr 11 11:20:06 PDT 2023
+Added new customer: "muye1" to customer database
+Tue Apr 11 11:20:11 PDT 2023
+Changed the password of customer with username muye1 to: 1234
+Tue Apr 11 11:20:29 PDT 2023
+Added new item "muzan" to Auction Market
+Tue Apr 11 11:20:39 PDT 2023
+Added new item "hashira" to Auction Market
+Tue Apr 11 11:20:49 PDT 2023
+Auctioned Off (removed item from auction market): "muzan"
+

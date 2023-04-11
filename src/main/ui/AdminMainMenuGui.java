@@ -1,13 +1,14 @@
 package ui;
 
-import model.AdminAccount;
-import model.AuctionMarket;
-import model.CustomerDatabase;
+import model.*;
+import model.Event;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 public class AdminMainMenuGui extends JFrame implements ActionListener {
 
@@ -74,4 +75,5 @@ public class AdminMainMenuGui extends JFrame implements ActionListener {
             new StartupInterfaceGui(this.customerDatabase, this.auctionMarket, this.adminAccount, false, false);
         }
     }
+
 }

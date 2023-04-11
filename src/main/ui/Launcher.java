@@ -3,6 +3,7 @@ package ui;
 import model.AdminAccount;
 import model.AuctionMarket;
 import model.CustomerDatabase;
+import model.EventLog;
 import persistence.JsonReaderAdminAccount;
 import persistence.JsonReaderAuctionMarket;
 import persistence.JsonReaderCustomerDatabase;
@@ -90,6 +91,7 @@ public class Launcher extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
+        EventLog.getInstance();
         new Launcher();
     }
 

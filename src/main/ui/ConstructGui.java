@@ -1,7 +1,12 @@
 package ui;
 
+import model.Event;
+import model.EventLog;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class ConstructGui extends JFrame {
 
@@ -25,6 +30,20 @@ public class ConstructGui extends JFrame {
         frame.add(panel);
 
         panel.add(background);
+
+        constructWindowListener(frame);
+    }
+
+    public void constructWindowListener(JFrame frame) {
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                System.out.println("Event log: \n");
+                for (Event event: EventLog.getInstance()) {
+                    System.out.println(event);
+                }
+            }
+        });
     }
 
     public void constructLabel(JLabel background, int x, int y, int w, int h,

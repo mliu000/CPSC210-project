@@ -1,13 +1,14 @@
 package ui;
 
-import model.AdminAccount;
-import model.AuctionMarket;
-import model.CustomerDatabase;
+import model.*;
+import model.Event;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 public class StartupInterfaceGui extends JFrame implements ActionListener {
 
@@ -95,6 +96,10 @@ public class StartupInterfaceGui extends JFrame implements ActionListener {
             new SaveData(this.auctionMarket, this.adminAccount, this.customerDatabase);
             this.background.getComponent(7).setVisible(true);
         } else {
+            System.out.println("Event log: \n");
+            for (Event event: EventLog.getInstance()) {
+                System.out.println(event);
+            }
             System.exit(0);
         }
     }

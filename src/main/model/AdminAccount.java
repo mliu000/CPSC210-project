@@ -36,6 +36,7 @@ public class AdminAccount implements Account, Writable {
     // EFFECTS: changes password to new input
     @Override
     public void changePassword(String newPassword) {
+        EventLog.getInstance().logEvent(new Event("Admin Account Password changed to: " + newPassword));
         this.password = newPassword;
     }
 

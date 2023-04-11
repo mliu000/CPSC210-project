@@ -23,6 +23,8 @@ public class AuctionMarket implements Writable {
     public void auctionOffItem(Item item) {
         this.itemsUpForAuction.remove(item);
         item.changeStatusToAuctionedOff();
+        EventLog.getInstance().logEvent(
+                new Event("Auctioned Off (removed item from auction market): \"" + item.getItemName() + "\""));
     }
 
     // EFFECTS: returns true if item with the given input name is found, false otherwise.

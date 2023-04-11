@@ -25,6 +25,10 @@ public class CustomerAccount implements Account, Writable {
         this.password = password;
         this.balance = balance;
         this.itemsWon = itemsWon;
+        if (!this.username.equals("No One")) {
+            EventLog.getInstance().logEvent(
+                    new Event("Added new customer: \"" + this.username + "\" to customer database"));
+        }
     }
 
     // EFFECTS: returns username
@@ -43,6 +47,8 @@ public class CustomerAccount implements Account, Writable {
     // EFFECTS: changes password of user
     @Override
     public void changePassword(String newPassword) {
+        EventLog.getInstance().logEvent(new Event("Changed the password of customer with username " + this.username
+                + " to: " + newPassword));
         this.password = newPassword;
     }
 

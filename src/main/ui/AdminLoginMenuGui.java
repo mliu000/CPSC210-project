@@ -1,13 +1,14 @@
 package ui;
 
-import model.AdminAccount;
-import model.AuctionMarket;
-import model.CustomerDatabase;
+import model.*;
+import model.Event;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 public class AdminLoginMenuGui extends JFrame implements ActionListener {
 
@@ -91,5 +92,6 @@ public class AdminLoginMenuGui extends JFrame implements ActionListener {
         this.background.getComponentAt(260, 420).setForeground(Color.red);
         this.background.getComponentAt(260, 420).setVisible(true);
     }
+
 
 }

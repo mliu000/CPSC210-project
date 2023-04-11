@@ -17,6 +17,7 @@ public class Item implements Writable {
         this.itemName = name;
         this.minBiddingPrice = minBiddingPrice;
         this.customerWithTheHighestBid = customerAccount;
+        EventLog.getInstance().logEvent(new Event("Added new item \"" + this.itemName + "\" to Auction Market"));
     }
 
     // MODIFIES: this, customer
