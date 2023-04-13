@@ -71,3 +71,19 @@ Added new item "hashira" to Auction Market
 Tue Apr 11 11:20:49 PDT 2023
 Auctioned Off (removed item from auction market): "muzan"
 
+**Phase 4: Task 3**
+
+In general, my phase 3 GUI functioned pretty smoothly with no noticeable issues, but the layout of the code is very 
+rough. The way I did it was to create a new class (each representing a window) every time I wanted to open a
+new page, where I would pass all fields represented in the uml diagram as parameters EVERY time, then discard the old
+window. This method worked, but it lead to a bunch of unnecessary duplication because the every gui class had
+pretty much the same setup, where the only difference was the individual components (location of buttons, labels, etc)
+and functionality. The setup of the frame itself, as well as the fields were pretty much the same. Therefore, a lot of 
+the code could be abstracted. If I were to make this exact project again, I would only create one class for my gui, and
+add a few list fields (specifically list of panels) that stores pages so that once I want to open a new menu, the code 
+only needs to look for that panel in the list, rather than create a new instance of that menu gui class every time. 
+As for the common functionality such as constructing the buttons, and labels, I would make a separate tool class 
+that contains the methods as a field in my main Gui class. That way, for example, if I want to make a new button, all I
+would need to do is call that method, and pass in parameters such as button size, x pos, y pos, etc. This would increase
+the overall cohesion of my program. 
+
