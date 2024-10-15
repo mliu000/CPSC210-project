@@ -12,6 +12,12 @@
             "items won": [],
             "balance": 0,
             "username": "muye2"
+        },
+        {
+            "password": "thisisanewaccount",
+            "items won": [],
+            "balance": 163601,
+            "username": "newaccount"
         }
     ]
 }

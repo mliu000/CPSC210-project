@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class ConstructGui extends JFrame {
+public class ConstructGui {
 
     private final int width = 1000;
     private final int height = 700;
